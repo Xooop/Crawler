@@ -39,4 +39,4 @@ def func1():
 
 
 if __name__ == '__main__':
-    print(func1())
+    func1()
