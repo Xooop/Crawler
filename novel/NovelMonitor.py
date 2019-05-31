@@ -10,10 +10,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+# 发送邮件的邮箱配置
+user = "" # xxx@qq.com(其他邮箱请对应修改smtp服务器)
+password = "" # 邮箱密码
+# 发送更新邮件到哪个邮箱
+email_address = ""
+# chrome浏览器位置
+chrome_position = "/opt/google/chrome/google-chrome"
+# chromedriver驱动位置
+chrome_driver = "/root/chromedriver"
+
 chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.managed_default_content_settings.images": 2}
 chrome_options.add_experimental_option("prefs", prefs)
-chrome_options.binary_location = '/opt/google/chrome/google-chrome'
+chrome_options.binary_location = chrome_position
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-infobars')
@@ -22,12 +32,6 @@ chrome_options.add_argument("--autoplay-policy=no-user-gesture-required")
 
 detailUrl = "detail-url"
 latestChapter = "latest-chapter"
-
-# 发送邮件的邮箱配置
-user = "" # xxx@qq.com(其他邮箱请对应修改smtp服务器)
-password = "" # 邮箱密码
-# 发送更新邮件到哪个邮箱
-email_address = ""
 
 
 def load_config():
@@ -57,7 +61,7 @@ def monitor(bookname):
     dct = load_config()
     if dct is None:
         dct = {}
-    driver = webdriver.Chrome(options=chrome_options, executable_path='/root/chromedriver')
+    driver = webdriver.Chrome(options=chrome_options, executable_path=chrome_driver)
     # 如果文件中不包含书籍的详情地址，则去搜索栏搜索并拿到详细地址，存入文件
     if bookname not in dct or dct[bookname] is None or dct[bookname][detailUrl] is None \
             or dct[bookname][detailUrl] == '':
