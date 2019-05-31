@@ -1,7 +1,7 @@
 ## 监听小说更新
 小说更新时，会自动发邮件到邮箱中，提醒小说已更新.
 
-目前监听的是www.biquge5.com这个网站（如果这个网站上找不到的小说，就搞不了233）
+目前监听的是www.biquge5.com 这个网站（如果这个网站上找不到的小说，就搞不了233）
 
 ### 环境
 - pyyaml
@@ -21,5 +21,10 @@ chrome_position = "/opt/google/chrome/google-chrome"
 # chromedriver驱动位置
 chrome_driver = "/root/chromedriver"
 ```
+运行：
+```shell
+python NovelMonitor.py 纣临
+```
+只要在www.biquge5.com 中有这本书，运行之后就会自动添加。
 
 鉴于我是跑在linux下的，就把任务放到crontab里定时执行就行了，如果是其他的可能需要自己再写个定时任务执行的脚本。
