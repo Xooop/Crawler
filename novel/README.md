@@ -16,5 +16,10 @@ user = "" # xxx@qq.com(其他邮箱请对应修改smtp服务器)
 password = "" # 邮箱密码
 # 发送更新邮件到哪个邮箱
 email_address = ""
+# chrome浏览器位置
+chrome_position = "/opt/google/chrome/google-chrome"
+# chromedriver驱动位置
+chrome_driver = "/root/chromedriver"
 ```
+
 鉴于我是跑在linux下的，就把任务放到crontab里定时执行就行了，如果是其他的可能需要自己再写个定时任务执行的脚本。
