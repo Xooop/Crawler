@@ -23,6 +23,9 @@ chrome_options.add_argument("--autoplay-policy=no-user-gesture-required")
 detailUrl = "detail-url"
 latestChapter = "latest-chapter"
 
+# 发送邮件的邮箱配置
+user = "" # xxx@qq.com(其他邮箱请对应修改smtp服务器)
+password = "" # 邮箱密码
 # 发送更新邮件到哪个邮箱
 email_address = ""
 
@@ -46,7 +49,7 @@ def dump_config(dct):
 
 
 def send_email(subject, content, send_to):
-    yag = yagmail.SMTP(user='', password='', host='smtp.qq.com')
+    yag = yagmail.SMTP(user=user, password=password, host='smtp.qq.com')
     yag.send(to=send_to, subject=subject, contents=content)
 
 
